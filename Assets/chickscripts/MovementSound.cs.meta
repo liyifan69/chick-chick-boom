@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 515db29b5c9094a0fbeecf6cec33022d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - verticalMovingSound: {fileID: 8300000, guid: 65a39fdcab1384a82bddbef6e0c7fd54,
+      type: 3}
+  - horizontalMovingSound: {fileID: 8300000, guid: b40c1d0306a8043a6b196c497b551c5b,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

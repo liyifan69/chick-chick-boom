@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31207380edf34b1b84ce50af22f2356, type: 3}
+  m_Name: PlaneDF
+  m_EditorClassIdentifier: 
+  input: {fileID: -8023080413318814639, guid: 95c7aad8fa35646079e4ed3cd540947c, type: 3}
+  minNodeSize: 0.22
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.11, y: 0.11, z: 0.11}
+  nodes:
+  - distancesA: {x: -0.17916472, y: 0.17916472, z: -0.17916472, w: 0.17916472}
+    distancesB: {x: -0.17916472, y: 0.17916472, z: -0.17916472, w: 0.17916472}
+    center: {x: 0, y: 0, z: 0, w: 0.11}
+    firstChild: -1
+  maxError: 0.02
+  maxDepth: 7
