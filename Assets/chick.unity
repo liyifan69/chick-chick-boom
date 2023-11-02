@@ -741,8 +741,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.6407795, y: 0.6198967, z: 2}
+  m_Center: {x: 0.000000074505806, y: 0.0070388988, z: 0}
 --- !u!23 &166708992
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -850,7 +850,7 @@ ParentConstraint:
   m_Active: 1
   m_IsLocked: 1
   m_Sources:
-  - sourceTransform: {fileID: 1780916075}
+  - sourceTransform: {fileID: 764041062}
     weight: 1
 --- !u!54 &166708997
 Rigidbody:
@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHandCount: 1
-  m_HandJointsVisibility: 1
+  m_HandJointsVisibility: 0
 --- !u!4 &364632153
 Transform:
   m_ObjectHideFlags: 0
