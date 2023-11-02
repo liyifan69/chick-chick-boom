@@ -5,7 +5,7 @@ using UnityEngine.XR.ARFoundation;
 
 public class HandJointAnimalSpawner : MonoBehaviour
 {
-    [SerializeField] private PlaneDetectionController m_Spawner;
+    [SerializeField] private TouchPlaneDetectionController m_Spawner;
 
     private float cooldown = 3f;
 

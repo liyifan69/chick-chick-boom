@@ -10,6 +10,13 @@ public class MovementSound : MonoBehaviour
     private bool isVerticalMoving;
     private bool isHorizontalMoving;
 
+    // colors
+    float angryValue = 0.35f;
+    float releasePerSecond = 0.1f;
+
+
+
+
     float deltaMovement = 0.1f;
 
     void Start()
@@ -83,5 +90,8 @@ public class MovementSound : MonoBehaviour
         {
 
         }
+
+
+        
     }
 }

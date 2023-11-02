@@ -18,9 +18,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.11, y: 0.11, z: 0.11}
   nodes:
-  - distancesA: {x: -0.17916472, y: 0.17916472, z: -0.17916472, w: 0.17916472}
-    distancesB: {x: -0.17916472, y: 0.17916472, z: -0.17916472, w: 0.17916472}
+  - distancesA: {x: -0.17916472, y: -0.17916472, z: 0.17916472, w: 0.17916472}
+    distancesB: {x: -0.17916472, y: -0.17916472, z: 0.17916472, w: 0.17916472}
     center: {x: 0, y: 0, z: 0, w: 0.11}
     firstChild: -1
-  maxError: 0.02
-  maxDepth: 7
+  maxError: 0.0238
+  maxDepth: 4
