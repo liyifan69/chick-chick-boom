@@ -62,10 +62,7 @@ All sample scenes in this project can be found in the `Assets/Scenes` folder. To
 | [Simple AR](#simple-ar) | Demonstrates basic Plane detection and Raycasting
 | [Camera](#camera) | Scenes that demonstrate Camera features |
 | [Plane detection](#plane-detection) | Scenes that demonstrate Plane detection |
-| [Image tracking](#image-tracking) | Scenes that demonstrate Image tracking |
 | [Object tracking](#object-tracking) | Demonstrates Object tracking |
-| [Face tracking](#face-tracking) | Scenes that demonstrate Face tracking |
-| [Body tracking](#body-tracking) | Scenes that demonstrate Body tracking |
 | [Point clouds](#point-clouds) | Demonstrates Point clouds |
 | [Anchors](#anchors) | Demonstrates Anchors |
 | [Meshing](#meshing) | Scenes that demonstrate Meshing |
@@ -76,7 +73,6 @@ All sample scenes in this project can be found in the `Assets/Scenes` folder. To
 | [Configuration Chooser](#configuration-chooser) | Demonstrates AR Foundation's Configuration Chooser |
 | [Debug Menu](#debug-menu) | Visualize trackables and configurations on device |
 | [ARKit](#arkit) | iOS-specific sample scenes |
-| [ARCore Record Session](#arcore-record-session) | Demonstrates ARCore's session recording feature |
 
 ## Simple AR
 
