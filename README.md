@@ -151,24 +151,6 @@ This sample demonstrates basic plane detection, but uses an occlusion shader for
 
 Move the device around until a plane is detected (its edges are still drawn) and then tap on the plane to place/move content.
 
-## Image Tracking
-
-There are two samples demonstrating image tracking. The image tracking samples are supported on ARCore and ARKit. To enable image tracking, you must first create an `XRReferenceImageLibrary`. This is the set of images to look for in the environment. [Click here](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/manual/features/image-tracking.html) for instructions on creating one.
-
-You can also add images to the reference image library at runtime. This sample includes a button that adds the images `one.png` and `two.png` to the reference image library. See the script `DynamicLibrary.cs` for example code.
-
-Run the sample on an ARCore or ARKit-capable device and point your device at one of the images in [`Assets/Scenes/ImageTracking/Images`](https://github.com/Unity-Technologies/arfoundation-samples/tree/master/Assets/Scenes/ImageTracking/Images). They can be displayed on a computer monitor; they do not need to be printed out.
-
-### Basic Image Tracking
-
-At runtime, ARFoundation will generate an `ARTrackedImage` for each detected reference image. This sample uses the [`TrackedImageInfoManager.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scenes/ImageTracking/BasicImageTracking/TrackedImageInfoManager.cs) script to overlay the original image on top of the detected image, along with some meta data.
-
-### Image Tracking With Multiple Prefabs
-
-With [`PrefabImagePairManager.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scenes/ImageTracking/ImageTrackingWithMultiplePrefabs/PrefabImagePairManager.cs) script, you can assign different prefabs for each image in the reference image library.
-
-You can also change prefabs at runtime. This sample includes a button that switch between the original and alternative prefab for the first image in the reference image library. See the script [`DynamicPrefab.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scenes/ImageTracking/ImageTrackingWithMultiplePrefabs/DynamicPrefab.cs) for example code.
-
 ## Object Tracking
 
 Similar to the image tracking sample, this sample detects a 3D object from a set of reference objects in an `XRReferenceObjectLibrary`. [Click here](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/manual/features/object-tracking.html) for instructions on creating one.
@@ -179,63 +161,6 @@ Alternatively, you can [scan your own objects](https://developer.apple.com/docum
 
 This sample requires iOS 12 or above.
 
-## Face Tracking
-
-There are several samples showing different face tracking features. Some are ARCore specific and some are ARKit specific.
-
-### Face Pose
-
-This is the simplest face tracking sample and simply draws an axis at the detected face's pose.
-
-This sample uses the front-facing (i.e., selfie) camera.
-
-### Face Mesh
-
-This sample instantiates and updates a mesh representing the detected face. Information about the device support (e.g., number of faces that can be simultaneously tracked) is displayed on the screen.
-
-This sample uses the front-facing (i.e., selfie) camera.
-
-### Face Regions (ARCore)
-
-"Face regions" are an ARCore-specific feature which provides pose information for specific "regions" on the detected face, e.g., left eyebrow. In this example, axes are drawn at each face region. See the [`ARCoreFaceRegionManager.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scripts/ARCoreFaceRegionManager.cs).
-
-This sample uses the front-facing (i.e., selfie) camera.
-
-### Blend Shapes (ARKit)
-
-"Blend shapes" are an ARKit-specific feature which provides information about various facial features on a scale of 0..1. For instance, "wink" and "frown". In this sample, blend shapes are used to puppet a cartoon face which is displayed over the detected face. See the [`ARKitBlendShapeVisualizer.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scripts/ARKitBlendShapeVisualizer.cs).
-
-This sample uses the front-facing (i.e., selfie) camera.
-
-### Eye Lasers, Eye Poses, and Fixation Point (ARKit)
-
-These samples demonstrate eye and fixation point tracking. Eye tracking produces a pose (position and rotation) for each eye in the detected face, and the "fixation point" is the point the face is looking at (i.e., fixated upon). `EyeLasers` uses the eye pose to draw laser beams emitted from the detected face.
-
-This sample uses the front-facing (i.e., selfie) camera and requires an iOS device with a TrueDepth camera.
-
-### Rear Camera (ARKit)
-
-iOS 13 adds support for face tracking while the world-facing (i.e., rear) camera is active. This means the user-facing (i.e., front) camera is used for face tracking, but the pass through video uses the world-facing camera. To enable this mode in ARFoundation, you must enable an `ARFaceManager`, set the `ARSession` tracking mode to "Position and Rotation" or "Don't Care", and set the `ARCameraManager`'s facing direction to "World". Tap the screen to toggle between the user-facing and world-facing cameras.
-
-The sample code in `DisplayFaceInfo.OnEnable` shows how to detect support for these face tracking features.
-
-When using the world-facing camera, a cube is displayed in front of the camera whose orientation is driven by the face in front of the user-facing camera.
-
-This feature requires a device with a TrueDepth camera and an A12 bionic chip running iOS 13.
-
-## Body Tracking
-
-### Body Tracking 2D
-
-This sample demonstrates 2D screen space body tracking. A 2D skeleton is generated when a person is detected. See the [`ScreenSpaceJointVisualizer.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scripts/ScreenSpaceJointVisualizer.cs) script.
-
-This sample requires a device with an A12 bionic chip running iOS 13 or above.
-
-### Body Tracking 3D
-
-This sample demonstrates 3D world space body tracking. A 3D skeleton is generated when a person is detected. See the [`HumanBodyTracker.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scripts/HumanBodyTracker.cs) script.
-
-This sample requires a device with an A12 bionic chip running iOS 13 or above.
 
 ## Point Clouds
 
@@ -375,10 +300,6 @@ This sample requires iOS 16 or newer and a device with an ultra-wide camera.
 This sample shows how to lock the device camera and set the camera focus mode and lens position. See [CameraFocusController.cs](https://github.com/Unity-Technologies/arfoundation-samples/blob/main/Assets/Scenes/ARKit/CameraFocus/CameraFocusController.cs) for example code.
 
 This sample requires iOS 16 or newer and a device with an ultra-wide camera.
-
-## ARCore Record Session
-
-This sample demonstrates the session recording and playback functionality available in ARCore. This feature allows you to record the sensor and camera telemetry during a live session, and then reply it at later time. When replayed, ARCore runs on the target device using the recorded telemetry rather than live data. See [ARCoreSessionRecorder.cs](https://github.com/Unity-Technologies/arfoundation-samples/blob/main/Assets/Scenes/ARCore/ARCoreSessionRecorder.cs) for example code.
 
 ## Additional demos
 
