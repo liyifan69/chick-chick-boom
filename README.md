@@ -6,12 +6,65 @@ Welcome to ChickChick Boom! This is a crazy fun AR game that lets you interact w
 
 https://github.com/liyifan69/chick-chick-boom/assets/148427008/bac2148f-960b-400c-a22f-4b3e7e7c2b1c
 
+# Obi Softbody
 
+## Softbody Blueprints
 
+### Creating a blueprint
 
+To create a softbody blueprint, go to Assets->Create->Obi->Softbody surface blueprint, or right-click on a project folder and select Create->Obi->Softbody surface blueprint. This is how the blueprint inspector looks like:
 
+![Obi Softbody Surface Blueprint](https://github.com/liyifan69/chick-chick-boom/assets/148427008/4b596611-4e4d-499b-8767-88ccfe785d14)
 
+### Surface sampling
 
+![Surface sampling](https://github.com/liyifan69/chick-chick-boom/assets/148427008/15a64682-d524-4ab0-a5f9-ba316340778a)
+
+This stage will distribute particles on the surface of your mesh.
+
+### Volume sampling
+
+![Volume sampling](https://github.com/liyifan69/chick-chick-boom/assets/148427008/6cd69a94-580f-412c-bf93-50d17cc88e80)
+
+This stage will distribute particles in the volume of your mesh. Note that if your mesh does not enclose any volume, this stage might generate no particles.
+
+### Skeleton sampling
+
+![Skeleton sampling](https://github.com/liyifan69/chick-chick-boom/assets/148427008/6dd13368-40df-4998-8f38-1c48807b554a)
+
+You can optionally ask Obi to generate particles for a character skeleton. These particles can be driven using animation, and in turn affect volume/surface particles around them. This results in what we call a full-body volumetric softbody, or FBVS for short.
+
+### Shape analysis
+
+![Shape analysis](https://github.com/liyifan69/chick-chick-boom/assets/148427008/f89935d4-a41f-4153-b3d4-20ca7e1cf726)
+
+As a final step, Obi will perform some additional shape analysis of your input mesh. This has two purposes: to adjust the shape and position of your particles to better fit the mesh, and to discard invalid clusters. Shape analysis is performed by voxelizing the mesh, and determining the shape of the local neighborhood around each voxel.
+
+## Softbody skinning
+
+Softbody simulation and rendering are taken care of by two separate components: ObiSoftbody (simulation) and ObiSoftbodySkinner(rendering). The former generates a particle-based representation of a mesh. The latter skins an arbitrary mesh to that particle-based representation, so that they move and deform together.
+
+### Obi Softbody Skinner
+
+This component performs automatic skinning of a target SkinnedMeshRenderer to the softbody particles. This is done by searching for the closest particles to each mesh vertex and assigning distance-based weights. You can control how this distance weighting is performed using the following parameters:
+
+This is how ObiSoftbodySkinner's inspector window looks like:
+
+<img width="451" alt="Obi Softbody Skinner" src="https://github.com/liyifan69/chick-chick-boom/assets/148427008/62c620c7-68f5-4f1b-a20c-112e0fb96f43">
+
+## Character softbody
+
+### create the softbody actor
+
+It's time to create the softbody actor. Select the character's root, go to GameObject->3DObject->Obi->Obi Softbody, a softbody actor will be automatically created as a child of the character's root. Then, assign the blueprint we created earlier to its blueprint slot.
+
+![Blueprint](https://github.com/liyifan69/chick-chick-boom/assets/148427008/1f687dcb-daeb-496a-bbab-ac41f79183a3)
+
+### Bind skin
+
+Because we want the character to be driven by the softbody simulation, we need to bind the mesh to our softbody. Add a ObiSoftbodySkinner component to the character's SkinnedMeshRenderer, and assign the ObiSoftbody to its Source softbody slot. Then, click Bind skin.
+
+![Source softbody](https://github.com/liyifan69/chick-chick-boom/assets/148427008/7f624e5d-508d-4a63-a5bc-89f1441919ff)
 
 # AR Foundation Samples
 
@@ -299,34 +352,6 @@ This sample requires iOS 16 or newer and a device with an ultra-wide camera.
 ## Additional demos
 
 While no longer actively maintained, Unity has a separate [AR Foundation Demos](https://github.com/Unity-Technologies/arfoundation-demos) repository that contains some larger samples including localization, mesh placement, shadows, and user onboarding UX.
-
-# Obi Softbody
-
-## Softbody Blueprints
-
-### Creating a blueprint
-
-To create a softbody blueprint, go to Assets->Create->Obi->Softbody surface blueprint, or right-click on a project folder and select Create->Obi->Softbody surface blueprint. This is how the blueprint inspector looks like:
-
-<img width="451" alt="Obi Softbody Surface Blueprint" src="https://github.com/liyifan69/chick-chick-boom/assets/148427008/80ac7a3d-1b39-4055-bdc8-0ed1f0422ac6">
-
-
-
-### Surface sampling
-
-
-This stage will distribute particles on the surface of your mesh.
-
-### Volume sampling
-
-This stage will distribute particles in the volume of your mesh. Note that if your mesh does not enclose any volume, this stage might generate no particles.
-
-### Skeleton sampling
-
-
-## Softbody skinning
-
-## Character softbodies
 
 # Community and Feedback
 
