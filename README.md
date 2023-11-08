@@ -1,3 +1,18 @@
+# ChickChick Boom
+
+Welcome to ChickChick Boom! This is a crazy fun AR game that lets you interact with cute chicks. Using gesture recognition technology, you can summon these cute chicks in the real world. Don't be afraid to pick them up, they make super cute bitchy noises! But be careful, if you poke them too much, they will get angry and turn red! Feel the emotional value and let your fingertips taunt these adorable little creatures in the real world.
+
+## Demo
+
+https://github.com/liyifan69/chick-chick-boom/assets/148427008/bac2148f-960b-400c-a22f-4b3e7e7c2b1c
+
+
+
+
+
+
+
+
 # AR Foundation Samples
 
 Example AR scenes that use [AR Foundation 5.1](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/manual/index.html) and demonstrate its features. Each feature is used in a minimal sample scene with example code that you can modify or copy into your project.
