@@ -55,7 +55,7 @@ To build to device, follow the steps below:
 
 All sample scenes in this project can be found in the `Assets/Scenes` folder. To learn more about the AR Foundation components used in each scene, see the [AR Foundation Documentation](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/manual/index.html). Each scene is explained in more detail below.
 
-# Table of Contents
+## Table of Contents
 
 | Sample scene(s) | Description |
 | :-------------- | :---------- |
@@ -74,7 +74,7 @@ All sample scenes in this project can be found in the `Assets/Scenes` folder. To
 | [Debug Menu](#debug-menu) | Visualize trackables and configurations on device |
 | [ARKit](#arkit) | iOS-specific sample scenes |
 
-## Simple AR
+### Simple AR
 
 This is a good starting sample that enables point cloud visualization and plane detection. There are buttons on screen that let you pause, resume, reset, and reload the ARSession.
 
@@ -87,9 +87,9 @@ When a plane is detected, you can tap on the detected plane to place a cube on i
 | Reset | Clears all detected trackables and effectively begins a new ARSession. |
 | Reload | Completely destroys the ARSession GameObject and re-instantiates it. This simulates the behavior you might experience during scene switching. |
 
-## Camera
+### Camera
 
-### CPU Images
+#### CPU Images
 
 This samples shows how to acquire and manipulate textures obtained from AR Foundation on the CPU. Most textures in ARFoundation (e.g., the pass-through video supplied by the `ARCameraManager`, and the human depth and human stencil buffers provided by the `AROcclusionManager`) are GPU textures. Computer vision or other CPU-based applications often require the pixel buffers on the CPU, which would normally involve an expensive GPU readback. AR Foundation provides an API for obtaining these textures on the CPU for further processing, without incurring the costly GPU readback.
 
@@ -99,11 +99,11 @@ The resolution of the camera image is affected by the camera's configuration. Th
 
 Where available (currently iOS 13+ only), the human depth and human stencil textures are also available on the CPU. These appear inside two additional boxes underneath the camera's image.
 
-### Basic Light Estimation
+#### Basic Light Estimation
 
 Demonstrates basic light estimation information from the camera frame. You should see values for "Ambient Intensity" and "Ambient Color" on screen. The relevant script is [`BasicLightEstimation.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scripts/BasicLightEstimation.cs) script.
 
-### HDR Light Estimation
+#### HDR Light Estimation
 
 This sample attempts to read HDR lighting information. You should see values for "Ambient Intensity", "Ambient Color", "Main Light Direction", "Main Light Intensity Lumens", "Main Light Color", and "Spherical Harmonics". Most devices only support a subset of these 6, so some will be listed as "Unavailable." The relevant script is [`HDRLightEstimation.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scripts/HDRLightEstimation.cs) script.
 
@@ -111,43 +111,43 @@ On iOS, this is only available when face tracking is enabled and requires a devi
 
 When using `HDRLightEstimation`, the sample will automatically pick the supported camera facing direction for you, for example `World` on Android and `User` on iOS, so it does not matter which facing direction you select in the `ARCameraManager` component.
 
-### Background Rendering Order
+#### Background Rendering Order
 
 Produces a visual example of how changing the background rendering between `BeforeOpaqueGeometry` and `AfterOpaqueGeometry` would effect a rudimentary AR application. Leverages Occlusion where available to display `AfterOpaqueGeometry` support for AR Occlusion.
 
-### Camera Grain (ARKit)
+#### Camera Grain (ARKit)
 
 This sample demonstrates the camera grain effect. Once a plane is detected, you can place a cube on it with a material that simulates the camera grain noise in the camera feed. See the `CameraGrain.cs` script. Also see  `CameraGrain.shader` which animates and applies the camera grain texture (through linear interpolation) in screenspace.
 
 This sample requires a device running iOS 13 or later and Unity 2020.2 or later.
 
-### EXIF Data
+#### EXIF Data
 
 This sample demonstrates how to access camera frame's EXIF metadata. You should see values for all the supported EXIF tags on screen. Refer to `ExifDataLogger.cs` for more details.
 
 This sample requires iOS 16 or newer.
 
-## Plane Detection 
+### Plane Detection 
 
-### Feathered Planes
+#### Feathered Planes
 
 This sample demonstrates basic plane detection, but uses a better looking prefab for the `ARPlane`. Rather than being drawn as exactly defined, the plane fades out towards the edges.
 
-### Toggle Plane Detection
+#### Toggle Plane Detection
 
 This sample shows how to toggle plane detection on and off. When off, it will also hide all previously detected planes by disabling their GameObjects. See [`PlaneDetectionController.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scripts/PlaneDetectionController.cs).
 
-### Plane Classification
+#### Plane Classification
 
 This sample shows how to query for a plane's classification. Some devices attempt to classify planes into categories such as "door", "seat", "window", and "floor". This scene enables plane detection using the `ARPlaneManager`, and uses a prefab which includes a component which displays the plane's classification, or "none" if it cannot be classified.
 
-### Plane Masking
+#### Plane Masking
 
 This sample demonstrates basic plane detection, but uses an occlusion shader for the plane's material. This makes the plane appear invisible, but virtual objects behind the plane are culled. This provides an additional level of realism when, for example, placing objects on a table.
 
 Move the device around until a plane is detected (its edges are still drawn) and then tap on the plane to place/move content.
 
-## Object Tracking
+### Object Tracking
 
 Similar to the image tracking sample, this sample detects a 3D object from a set of reference objects in an `XRReferenceObjectLibrary`. [Click here](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/manual/features/object-tracking.html) for instructions on creating one.
 
@@ -157,8 +157,7 @@ Alternatively, you can [scan your own objects](https://developer.apple.com/docum
 
 This sample requires iOS 12 or above.
 
-
-## Point Clouds
+### Point Clouds
 
 This sample shows all feature points over time, not just the current frame's feature points as the "AR Default Point Cloud" prefab does. It does this by using a slightly modified version of the `ARPointCloudParticleVisualizer` component that stores all the feature points in a Dictionary. Since each feature point has a unique identifier, it can look up the stored point and update its position in the dictionary if it already exists. This can be a useful starting point for custom solutions that require the entire map of point cloud points, e.g., for custom mesh reconstruction techniques.
 
@@ -166,7 +165,7 @@ This sample has two UI components:
 * A button in the lower left which allows you to switch between visualizing "All" the points and just those in the "Current Frame".
 * Text in the upper right which displays the number of points in each point cloud (ARCore & ARKit will only ever have one).
 
-## Anchors
+### Anchors
 
 This sample shows how to create anchors as the result of a raycast hit. The "Clear Anchors" button removes all created anchors. See the [`AnchorCreator.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scripts/AnchorCreator.cs) script.
 
@@ -174,64 +173,64 @@ This script can create two kinds of anchors:
 1. If a feature point is hit, it creates a normal anchor at the hit pose using the `GameObject.AddComponent<ARAnchor>()` method.
 1. If a plane is hit, it creates an anchor "attached" to the plane using the [AttachAnchor](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/api/UnityEngine.XR.ARFoundation.ARAnchorManager.html#UnityEngine_XR_ARFoundation_ARAnchorManager_AttachAnchor_UnityEngine_XR_ARFoundation_ARPlane_Pose_) method.
 
-## Meshing
+### Meshing
 
 These meshing scenes use features of some devices to construct meshes from scanned data of real world surfaces. These meshing scenes will not work on all devices.
 
 For ARKit, this functionality requires at least iPadOS 13.4 running on a device with a LiDAR scanner.
 
-### Classification Meshes
+#### Classification Meshes
 
 This scene demonstrates mesh classification functionality. With mesh classification enabled, each triangle in the mesh surface is identified as one of several surface types. This sample scene creates submeshes for each classification type and renders each mesh type with a different color.
 
 This scene only works on ARKit.
 
-### Normal Meshes
+#### Normal Meshes
 
 This scene renders an overlay on top of the real world scanned geometry illustrating the normal of the surface.
 
-### Occlusion Meshes
+#### Occlusion Meshes
 
 At first, this scene may appear to be doing nothing. However, it is rendering a depth texture on top of the scene based on the real world geometry. This allows for the real world to occlude virtual content. The scene has a script on it that fires a red ball into the scene when you tap. You will see the occlusion working by firing the red balls into a space which you can then move the iPad camera behind some other real world object to see that the virtual red balls are occluded by the real world object.
 
-## Environment Probes
+### Environment Probes
 
 This sample demonstrates environment probes, a feature which attempts to generate a 3D texture from the real environment and applies it to reflection probes in the scene. The scene includes several spheres which start out completely black, but will change to shiny spheres which reflect the real environment when possible.
 
-## Occlusion
+### Occlusion
 
-### SimpleOcclusion
+#### SimpleOcclusion
 
 This sample demonstrates occlusion of virtual content by real world content through the use of environment depth images on supported Android and iOS devices.
 
-### Depth Images
+#### Depth Images
 
 This sample demonstrates raw texture depth images from different methods.
 * Environment depth (certain Android devices and Apple devices with the LiDAR sensor)
 * Human stencil (Apple devices with an A12 bionic chip (or later) running iOS 13 or later)
 * Human depth (Apple devices with an A12 bionic chip (or later) running iOS 13 or later)
 
-## Check Support
+### Check Support
 
 Demonstrates checking for AR support and logs the results to the screen. The relevant script is [`SupportChecker.cs`](https://github.com/Unity-Technologies/arfoundation-samples/blob/master/Assets/Scripts/SupportChecker.cs).
 
-## Interaction
+### Interaction
 
 This sample scene demonstrates the functionality of the `XR Interaction Toolkit` package. In the scene, you are able to place a cube on a plane which you can translate, rotate and scale with gestures. See the [`XR Interaction Toolkit Documentation`](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@latest) for more details.
 
-## Configuration Chooser
+### Configuration Chooser
 
 Demonstrates how to use the AR Foundation session's ConfigurationChooser to swap between rear and front-facing camera configurations.
 
-## Debug Menu
+### Debug Menu
 
 The AR Foundation Debug Menu allows you to visualize trackables and configurations on device.
 
-## ARKit
+### ARKit
 
 These samples are only available on iOS devices.
 
-### Coaching Overlay
+#### Coaching Overlay
 
 The coaching overlay is an ARKit-specific feature which will overlay a helpful UI guiding the user to perform certain actions to achieve some "goal", such as finding a horizontal plane.
 
@@ -243,11 +242,11 @@ This sample also shows how to subscribe to ARKit session callbacks. See [CustomS
 
 This sample requires iOS 13 or above.
 
-### Thermal State
+#### Thermal State
 
 This sample contains the code required to query for an iOS device's thermal state so that the thermal state may be used with C# game code. This sample illustrates how the thermal state may be used to disable AR Foundation features to reduce the thermal state of the device.
 
-### AR World Map
+#### AR World Map
 
 An `ARWorldMap` is an ARKit-specific feature which lets you save a scanned area. ARKit can optionally relocalize to a saved world map at a later time. This can be used to synchronize multiple devices to a common space, or for curated experiences specific to a location, such as a museum exhibition or other special installation. Read more about world maps [here](https://developer.apple.com/documentation/arkit/arworldmap). A world map will store most types of trackables, such as reference points and planes.
 
@@ -255,7 +254,7 @@ The [`ARWorldMapController.cs`](https://github.com/Unity-Technologies/arfoundati
 
 This sample requires iOS 12 or above.
 
-### Geo Anchors
+#### Geo Anchors
 
 [ARKit's ARGeoAnchors](https://developer.apple.com/documentation/arkit/argeoanchor?language=objc) are not yet supported by ARFoundation, but you can still access this feature with a bit of Objective-C. This sample uses a custom [ConfigurationChooser](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.1/api/UnityEngine.XR.ARSubsystems.ConfigurationChooser.html) to instruct the Apple ARKit XR Plug-in to use an [ARGeoTrackingConfiguration](https://developer.apple.com/documentation/arkit/argeotrackingconfiguration?language=objc).
 
@@ -263,7 +262,7 @@ This sample also shows how to interpret the [nativePtr](https://docs.unity3d.com
 
 This sample requires an iOS device running iOS 14.0 or later, an A12 chip or later, location services enabled, and cellular capability.
 
-### AR Collaboration Data
+#### AR Collaboration Data
 
 Similar to an `ARWorldMap`, a "collaborative session" is an ARKit-specific feature which allows multiple devices to share session information in real time. Each device will periodically produce `ARCollaborationData` which should be sent to all other devices in the collaborative session. ARKit will share each participant's pose and all reference points. Other types of trackables, such as detected planes, are not shared.
 
@@ -275,23 +274,23 @@ You can create reference points by tapping on the screen. Reference points are c
 
 This sample requires iOS 13 or above.
 
-### High Resolution CPU Image
+#### High Resolution CPU Image
 
 This sample demonstrates high resolution CPU image capture on iOS 16 and newer. See the [High Resolution CPU Image](https://docs.unity3d.com/Packages/com.unity.xr.arkit@5.1/manual/arkit-camera.html#high-resolution-cpu-image) package documentation to learn more about this feature.
 
-### Camera Exposure
+#### Camera Exposure
 
 This sample shows how to lock the device camera and set the camera exposure mode, duration, and ISO. See [CameraExposureController.cs](https://github.com/Unity-Technologies/arfoundation-samples/blob/main/Assets/Scenes/ARKit/CameraExposure/CameraExposureController.cs) for example code.
 
 This sample requires iOS 16 or newer and a device with an ultra-wide camera.
 
-### Camera White Balance
+#### Camera White Balance
 
 This sample shows how to lock the device camera and set the camera white balance mode and gains. See [CameraWhiteBalanceController.cs](https://github.com/Unity-Technologies/arfoundation-samples/blob/main/Assets/Scenes/ARKit/CameraWhiteBalance/CameraWhiteBalanceController.cs) for example code.
 
 This sample requires iOS 16 or newer and a device with an ultra-wide camera.
 
-### Camera Focus
+#### Camera Focus
 
 This sample shows how to lock the device camera and set the camera focus mode and lens position. See [CameraFocusController.cs](https://github.com/Unity-Technologies/arfoundation-samples/blob/main/Assets/Scenes/ARKit/CameraFocus/CameraFocusController.cs) for example code.
 
@@ -300,6 +299,34 @@ This sample requires iOS 16 or newer and a device with an ultra-wide camera.
 ## Additional demos
 
 While no longer actively maintained, Unity has a separate [AR Foundation Demos](https://github.com/Unity-Technologies/arfoundation-demos) repository that contains some larger samples including localization, mesh placement, shadows, and user onboarding UX.
+
+# Obi Softbody
+
+## Softbody Blueprints
+
+### Creating a blueprint
+
+To create a softbody blueprint, go to Assets->Create->Obi->Softbody surface blueprint, or right-click on a project folder and select Create->Obi->Softbody surface blueprint. This is how the blueprint inspector looks like:
+
+<img width="451" alt="Obi Softbody Surface Blueprint" src="https://github.com/liyifan69/chick-chick-boom/assets/148427008/80ac7a3d-1b39-4055-bdc8-0ed1f0422ac6">
+
+
+
+### Surface sampling
+
+
+This stage will distribute particles on the surface of your mesh.
+
+### Volume sampling
+
+This stage will distribute particles in the volume of your mesh. Note that if your mesh does not enclose any volume, this stage might generate no particles.
+
+### Skeleton sampling
+
+
+## Softbody skinning
+
+## Character softbodies
 
 # Community and Feedback
 
